@@ -10,7 +10,9 @@ gem 'sqlite3'
 gem 'haml-rails'
 gem 'coffee-rails', '~> 3.2.1'
 gem 'omniauth-google-oauth2'
+
 gem 'google-api-client'
+gem 'google-api-omniauth', '>= 0.1.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
