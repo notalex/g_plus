@@ -6,13 +6,13 @@
 
     %meta{name: "google-signin-clientid", content: "674771599264.apps.googleusercontent.com"}
     %meta{ name: "google-signin-scope",
-      content: 'https://www.googleapis.com/auth/plus.stream.read https://www.googleapis.com/auth/plus.stream.write' }
+      content: 'email profile https://www.googleapis.com/auth/plus.me https://www.googleapis.com/auth/plus.stream.write' }
     %meta{name: "google-signin-cookiepolicy", content: "single_host_origin" }
 
     = stylesheet_link_tag    "application", :media => "all"
 
     = javascript_include_tag "application"
-    %script{ src: 'https://apis.google.com/js/client:plusone.js?onload=startTheShow' }
+    %script{ src: 'https://apis.google.com/js/client:plusone.js' }
 
     = csrf_meta_tags
 
