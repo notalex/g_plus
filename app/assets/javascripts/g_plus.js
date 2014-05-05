@@ -10,12 +10,9 @@ $(function() {
   })
 
   function signInCallback(authResult) {
-    $.ajax({ url: '/get_refresh_token',
+    $.ajax({ url: '/users',
       type: 'POST',
-      data: { access_token: authResult['access_token'],
-        code: authResult['code'],
-        id_token: authResult['id_token']
-      }
+      data: { code: authResult['code'] }
     })
   }
 })
