@@ -4,7 +4,12 @@
   %head
     %title GPlus
     = stylesheet_link_tag    "application", :media => "all"
+    %meta{name: "google-signin-clientid", content: CLIENT_SECRETS.client_id }
+    %meta{ name: "google-signin-scope",
+      content: 'https://www.googleapis.com/auth/plus.me https://www.googleapis.com/auth/plus.stream.write' }
+    %meta{name: "google-signin-cookiepolicy", content: "single_host_origin" }
     = javascript_include_tag "application"
+    %script{ src: 'https://apis.google.com/js/client:plusone.js'  }
     = csrf_meta_tags
 
 %body

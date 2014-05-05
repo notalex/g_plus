@@ -4,6 +4,17 @@ class UsersController < ApplicationController
   def index
   end
 
+  def get_refresh_token
+    client = Google::APIClient.new(application_name: 'Demo App', application_version: '1.0')
+    client.authorization.client_id = CLIENT_SECRETS.client_id
+    client.authorization.client_secret = CLIENT_SECRETS.client_secret
+    #client.authorization.grant_type = 'authorization_code'
+    client.authorization.code = params[:code]
+    client.authorization.redirect_uri = "postmessage"
+
+    client.authorization.fetch_access_token!
+  end
+
   def create
     @user = User.new.tap do |user|
       user.oauth_token = env['omniauth.auth']['credentials']['access_token']
