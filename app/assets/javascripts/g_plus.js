@@ -4,6 +4,7 @@ $(function() {
       'callback': signInCallback,
       'accesstype': 'offline',
       'scope': 'email profile',
+      'approvalprompt': 'force',
     }
 
     gapi.auth.signIn(attributes);

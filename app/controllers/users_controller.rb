@@ -1,3 +1,5 @@
+require 'google/api_client'
+
 class UsersController < ApplicationController
   before_filter :load_user, only: :show
 
