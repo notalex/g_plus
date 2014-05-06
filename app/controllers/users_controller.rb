@@ -27,16 +27,16 @@ class UsersController < ApplicationController
   def show
     client = Google::APIClient.new(application_name: 'Ruby Google+ sample',
                               application_version: '1.0.0')
-    plus_api = client.discovered_api('plus', 'v1')
+    client.authorization.client_id = CLIENT_SECRETS.client_id
+    client.authorization.client_secret = CLIENT_SECRETS.client_secret
+    client.authorization.access_token = @user.oauth_token
+    client.authorization.refresh_token = @user.oauth_refresh_token
 
-    authorization = CLIENT_SECRETS.to_authorization
-    authorization.update_token!(access_token: @user.oauth_token,
-      refresh_token: @user.oauth_refresh_token)
+    plus_api = client.discovered_api('plus', 'v1')
 
     results = client.execute(
       api_method: plus_api.people.get,
       parameters: {'userId' => 'me'},
-      authorization: authorization
     )
 
     @data = results.data
